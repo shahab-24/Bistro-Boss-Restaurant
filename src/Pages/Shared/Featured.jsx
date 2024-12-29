@@ -3,12 +3,12 @@ import SectionTitle from "../../Components/SectionTitle";
 
 const Featured = () => {
   return (
-    <div className="featured-item mx-auto py-10">
+    <div className="featured-item bg-fixed mx-auto py-10">
       <SectionTitle
         subHeading={"Check it Out"}
         heading={"from our menu"}
       ></SectionTitle>
-      <div className="flex gap-6 items-center justify-center py-20 px-36 pt-10">
+      <div className="flex gap-6 items-center justify-center bg-slate-500 bg-opacity-55 py-20 px-36 pt-10 mb-4">
         <div className="">
           <img className="" src={featuredImg} alt="" />
         </div>
