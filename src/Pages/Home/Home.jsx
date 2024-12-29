@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Featured from "../Shared/Featured";
 import PopularMenu from "../Shared/PopularMenu";
 import Banner from "./Banner";
@@ -8,6 +9,9 @@ import Testimonials from "./Testimonials";
 const Home = () => {
 	return (
 		<div>
+			<Helmet>
+				<title>Bistro Boss | Home</title>
+			</Helmet>
 		<Banner></Banner>
 		<div className="my-20">
 			<Category></Category>

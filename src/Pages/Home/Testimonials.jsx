@@ -37,9 +37,10 @@ const Testimonials = () => {
                   value={review.rating}
                   readOnly
                 />
+				<img src="https://img.icons8.com/?size=50&id=38970&format=png" alt="" />
                 {/* <p>{review.}</p> */}
                 <p>{review.details}</p>
-                <h2 className="text-3xl font-bold text-orange-500">
+                <h2 className="text-3xl font-bold text-orange-400">
                   {review.name}
                 </h2>
               </div>
