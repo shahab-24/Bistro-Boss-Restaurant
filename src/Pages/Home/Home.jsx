@@ -1,3 +1,4 @@
+import Featured from "../Shared/Featured";
 import PopularMenu from "../Shared/PopularMenu";
 import Banner from "./Banner";
 import Category from "./Category";
@@ -13,6 +14,7 @@ const Home = () => {
 		<section>
 			<PopularMenu></PopularMenu>
 		</section>
+		<Featured></Featured>
 		</div>
 	);
 };
