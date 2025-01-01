@@ -1,15 +1,28 @@
 import { useForm} from "react-hook-form"
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+
 const SignUp = () => {
+  const {createUser} = useContext(AuthContext)
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	  } = useForm()
 
+  
+
 	const onSubmit = (data) =>{ 
-    console.log(data)}
+    createUser(data.email, data.password)
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser)
+    })
+  
+  }
 
 	return (
 <div className="hero bg-base-200 min-h-screen">
@@ -41,8 +54,17 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input {...register("password", {required: true})}  type="password"  name="password" placeholder="password" className="input input-bordered" required />
-          {errors.password && (<p className="text-red-500">Please give correct password</p>)}
+          <input {...register("password", {
+            required: true, 
+            minLength: 6, 
+            maxLength: 20,
+            pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}/,
+        
+            })}  type="password"  name="password" placeholder="password" className="input input-bordered" required />
+          
+          {errors.password?.type === "pattern" && (<p className="text-red-500">password must be 6 characters, one uppercase, one lowercase, one special character and one number</p>)}
+          {errors.password?.type === "minLength" && (<p className="text-red-500">password must be 6 characters</p>)}
+          {errors.password?.type === "required" && (<p className="text-red-500">Please give correct password</p>)}
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
