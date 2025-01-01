@@ -21,9 +21,9 @@ const AuthProvider = ({ children }) => {
   };
 
 
-  const signIn = (email, passwrod) => {
+  const signIn = (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, passwrod);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
 
@@ -53,7 +53,9 @@ const AuthProvider = ({ children }) => {
     logOut,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+    {children}
+    </AuthContext.Provider>
   );
 };
 

@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import Menu from "../Pages/Our Menu/Menu";
 import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
 
 
 
@@ -28,7 +29,11 @@ import Login from "../Pages/Login";
 			element: <Order></Order>
 		},
 		{path:'login',
-		element: <Login></Login>}
+		element: <Login></Login>},
+		{
+			path: 'signup',
+			element: <SignUp></SignUp>
+		}
 	  ]
 	},
   ]);
