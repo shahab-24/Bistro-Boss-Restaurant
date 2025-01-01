@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import featuredImg from "../../assets/featured.jpg";
 import SectionTitle from "../../Components/SectionTitle";
 
@@ -24,7 +25,8 @@ const Featured = () => {
             voluptatibus repellendus fugiat reprehenderit quo, exercitationem
             pariatur est.
           </p>
-          <button className="btn btn-outline"> Read More.....</button>
+          <Link to="/order"><button className="btn btn-outline border-0 border-b-4 text-white  mt-4"> Order Now</button></Link>
+          
         </div>
       </div>
     </div>
