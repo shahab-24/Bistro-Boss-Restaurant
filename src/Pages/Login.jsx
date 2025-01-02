@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../Provider/AuthProvider';
@@ -8,6 +8,10 @@ const Login = () => {
 	const captchaRef = useRef();
 	const [disabled, setDisabled] = useState(true)
   const {signIn,setUser} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || "/"
 
 
 	useEffect(() => {
@@ -23,7 +27,8 @@ const Login = () => {
     .then(res => {
       const user = res.user;
       setUser(user)
-      if(user){
+
+    
         Swal.fire({
           title: "user login successful",
           showClass: {
@@ -41,7 +46,8 @@ const Login = () => {
             `
           }
         });
-      }
+        navigate(from, {replace: true})
+      
     })
     .catch(err => {
       console.log(err.message)
