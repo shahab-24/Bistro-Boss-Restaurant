@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../hooks/useCart";
 // import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   // const {user,logOut} = useAuth()
   const {user,logOut} = useContext(AuthContext)
+  const [cart] = useCart()
   const navOptions = (
     <>
       <li>
@@ -71,7 +73,7 @@ const Navbar = () => {
         <div className="navbar-end flex gap-4">
         <button className="btn btn-outline">
         <FaShoppingCart />
-  <div className="badge badge-secondary">+0</div>
+  <div className="badge badge-secondary">{cart.length}</div>
 </button>
         {user ? <>  <div className="flex gap-4">
           <span>{user.displayName} </span><li>
