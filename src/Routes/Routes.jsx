@@ -27,9 +27,9 @@ import PrivateRoute from "./PrivateRoute";
 		},
 		{
 			path:'order/:category',
-			element: <PrivateRoute>
+			element: 
 				<Order></Order>
-			</PrivateRoute>
+			
 		},
 		{path:'login',
 		element: <Login></Login>},
