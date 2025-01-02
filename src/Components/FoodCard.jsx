@@ -3,10 +3,12 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 const FoodCard = ({ item }) => {
   const { image, price, name, recipe, _id } = item;
   const { user } = useAuth();
+  const [, refetch] = useCart()
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure()
@@ -31,6 +33,7 @@ const FoodCard = ({ item }) => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              refetch()
 
         }
         
