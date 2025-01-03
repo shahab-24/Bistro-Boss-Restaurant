@@ -9,6 +9,8 @@ import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import Cart from "../Pages/Dashboard/Cart";
 
 
 
@@ -38,5 +40,14 @@ import PrivateRoute from "./PrivateRoute";
 			element: <SignUp></SignUp>
 		}
 	  ]
-	},
+	},{
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'cart',
+                element: <Cart></Cart>
+            }
+        ]
+    }
   ]);

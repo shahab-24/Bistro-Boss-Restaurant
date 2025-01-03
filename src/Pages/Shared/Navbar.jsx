@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
@@ -71,10 +71,13 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navOptions} </ul>
         </div>
         <div className="navbar-end flex gap-4">
-        <button className="btn btn-outline">
+            <Link to='/dashboard/cart'>
+            <button className="btn btn-outline">
         <FaShoppingCart />
   <div className="badge badge-secondary">{cart.length}</div>
 </button>
+            </Link>
+        
         {user ? <>  <div className="flex gap-4">
           <span>{user.displayName} </span><li>
         <button onClick={handleLogOut}>Log Out</button>
