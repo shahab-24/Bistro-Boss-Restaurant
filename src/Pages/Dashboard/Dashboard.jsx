@@ -5,16 +5,61 @@ import {
   FaList,
   FaSearch,
   FaShoppingCart,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
+
+    const [cart]= useCart()
+
+    const isAdmin = true;
   return (
     <div className="flex gap-4">
       {/* sidebar content */}
       <div className="w-64 min-h-screen bg-orange-400">
         <ul className="menu p-4 text-white">
+          
+
+          {
+            isAdmin ? <>
+            <li>
+            <NavLink to="/dashboard/home">
+              {" "}
+              <FaHome></FaHome>Admin Home
+            </NavLink>
+          </li>
           <li>
+            <NavLink to="/dashboard/cart">
+              {" "}
+              <FaUtensils></FaUtensils> Add Items
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/manageItems">
+              {" "}
+              <FaCalendar></FaCalendar> Manage Items
+            </NavLink>
+          </li>
+        
+          <li>
+            <NavLink to="/dashboard/bookings">
+              {" "}
+              <FaList></FaList> Manage Bookings
+            </NavLink>
+
+              <li>
+            <NavLink to="/dashboard/users">
+              {" "}
+              <FaUsers></FaUsers> All Users
+            </NavLink>
+          </li>
+          </li></>
+             : 
+
+            <><li>
             <NavLink to="/dashboard/home">
               {" "}
               <FaHome></FaHome>User HOme
@@ -43,9 +88,11 @@ const Dashboard = () => {
               {" "}
               <FaList></FaList> My Bookings
             </NavLink>
-          </li>
+          </li></>
+          }
 
-          
+
+          {/* shared items */}
           <div className="divider"></div>
           <li>
             <NavLink to="/">

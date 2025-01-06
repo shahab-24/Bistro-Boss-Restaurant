@@ -11,6 +11,7 @@ import SignUp from "../Pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
+import AllUsers from "../Pages/Dashboard/AllUsers";
 
 
 
@@ -42,11 +43,17 @@ import Cart from "../Pages/Dashboard/Cart";
 	  ]
 	},{
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard>,</PrivateRoute>,
         children: [
             {
                 path: 'cart',
                 element: <Cart></Cart>
+            },
+
+            // Admin routes========
+            {
+                path:'users',
+                element: <AllUsers></AllUsers>
             }
         ]
     }
