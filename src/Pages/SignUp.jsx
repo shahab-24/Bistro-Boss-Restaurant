@@ -29,7 +29,8 @@ const SignUp = () => {
       .then(()=> {
         const userInfo = {
             name: data.name,
-            email: data.email
+            email: data.email,
+            photo: data.photoURL
         }
         axiosPublic.post('/users', userInfo)
         .then(res => {
@@ -73,6 +74,13 @@ const SignUp = () => {
           </label>
           <input {...register("name", {required: true})} type="text" placeholder="name" className="input input-bordered" required />
 		  {errors.name && (<p className="text-red-500">this field is required</p>)}
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Photo URL</span>
+          </label>
+          <input {...register("photo", {required: true})} type="text" placeholder="PhotoURL" className="input input-bordered" required />
+		  {errors.photo && (<p className="text-red-500">this field is required</p>)}
         </div>
         <div className="form-control">
           <label className="label">
