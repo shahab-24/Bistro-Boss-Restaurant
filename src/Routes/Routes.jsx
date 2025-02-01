@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers";
+import AddItems from "../Components/AddItems";
 
 
 
@@ -54,6 +55,10 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
             {
                 path:'users',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path:'add-items',
+                element: <AddItems></AddItems>
             }
         ]
     }

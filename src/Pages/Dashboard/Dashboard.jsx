@@ -1,5 +1,7 @@
 import {
   FaAd,
+  FaAddressBook,
+  FaAddressCard,
   FaCalendar,
   FaHome,
   FaList,
@@ -33,9 +35,9 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/dashboard/cart">
+            <NavLink to="/dashboard/carts">
               {" "}
-              <FaUtensils></FaUtensils> Add Items
+              <FaUtensils></FaUtensils> Carts
             </NavLink>
           </li>
           <li>
@@ -51,13 +53,21 @@ const Dashboard = () => {
               <FaList></FaList> Manage Bookings
             </NavLink>
 
-              <li>
+             
+          </li>
+          <li>
             <NavLink to="/dashboard/users">
               {" "}
               <FaUsers></FaUsers> All Users
             </NavLink>
           </li>
-          </li></>
+          <li>
+            <NavLink to="/dashboard/add-items">
+              {" "}
+              <FaAddressBook></FaAddressBook> Add Items
+            </NavLink>
+          </li>
+          </>
              : 
 
             <><li>
