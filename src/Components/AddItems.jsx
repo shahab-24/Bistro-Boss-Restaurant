@@ -1,11 +1,24 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "./SectionTitle";
 import { FaUtensils } from "react-icons/fa";
+import useAxiosPublic from "../hooks/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
+  const axiosPublic = useAxiosPublic()
+
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+        console.log(data)
+        const imageFile = {image: data.image[0]}
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+                headers: {
+                        'content-type': 'multipart/form-data'
+                }
+        })
+    console.log(res.data);
   };
   return (
     <div className="mt-10">
@@ -41,7 +54,9 @@ const AddItems = () => {
                 {...register("category")}
                 className="input input-bordered w-full"
               >
-                <option value="default" selected>Select A Category</option>
+                <option value="default" selected>
+                  Select A Category
+                </option>
                 <option value="salad">Salad</option>
                 <option value="pizza">Pizza</option>
                 <option value="soup">Soup</option>
@@ -66,7 +81,7 @@ const AddItems = () => {
 
           {/* text area */}
           <div className="my-6">
-          <div className="label">
+            <div className="label">
               <span className="label-text">Recipe Details</span>
             </div>
             <textarea
@@ -80,20 +95,16 @@ const AddItems = () => {
             <div className="label">
               <span className="label-text">File input</span>
             </div>
-            
 
             <input
-            {...register('image')}
+              {...register("image")}
               type="file"
               className="file-input file-input-bordered w-full "
             />
           </div>
           <button className="btn">
-          Add Items <FaUtensils></FaUtensils>
-
+            Add Items <FaUtensils></FaUtensils>
           </button>
-
-          
         </form>
       </div>
     </div>
