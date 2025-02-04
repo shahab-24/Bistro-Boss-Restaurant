@@ -13,6 +13,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import AddItems from "../Components/AddItems";
+import AdminRoute from "./AdminRoute";
+import ManageItems from "../Pages/Dashboard/ManageItems";
 
 
 
@@ -31,8 +33,7 @@ import AddItems from "../Components/AddItems";
 		},
 		{
 			path:'order/:category',
-			element: 
-				<Order></Order>
+			element:  <Order></Order>
 			
 		},
 		{path:'login',
@@ -58,7 +59,11 @@ import AddItems from "../Components/AddItems";
             },
             {
                 path:'add-items',
-                element: <AddItems></AddItems>
+                element: <AdminRoute><AddItems></AddItems></AdminRoute>
+            },
+            {
+                path:'manageItems',
+                element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
             }
         ]
     }
