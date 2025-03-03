@@ -1,8 +1,17 @@
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import SectionTitle from "../../Components/SectionTitle";
 import useMenu from "../../hooks/useMenu";
 
 const ManageItems = () => {
         const [menu] = useMenu()
+
+        const handleDeleteItem = () => {
+                console.log("delete items form manage items")
+        }
+
+        const handleUpdateItem = () => {
+                console.log('update form manage items page')
+        }
 
         return (
                 <div>
@@ -44,10 +53,10 @@ const ManageItems = () => {
           {item.name}
           
         </td>
-        <td>Purple</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
+        <td><button onClick={()=>handleUpdateItem(item)} className="btn btn-ghost btn-lg text-orange-600"><FaEdit></FaEdit></button></td>
+        <td>
+        <button onClick={()=>handleDeleteItem(item)} className="btn btn-ghost btn-lg text-red-600"><FaTrashAlt></FaTrashAlt></button>
+        </td>
       </tr>)}
       
      
