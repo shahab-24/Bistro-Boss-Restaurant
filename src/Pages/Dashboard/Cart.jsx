@@ -2,6 +2,7 @@ import { FaTrash } from "react-icons/fa";
 import useCart from "../../hooks/useCart";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cart, refetch] = useCart()
@@ -47,7 +48,9 @@ const Cart = () => {
         flex justify-evenly mt-4 bg-orange-400 text-white p-2 my-6">
         <h2 className="text-4xl">Items :{cart.length} </h2>
         <h2 className="text-4xl">Total Price :{totalPrice} </h2>
+        {cart.length ? <Link to='/dashboard/payment'>
         <button className="btn btn-error">Pay</button>
+        </Link> :<button disabled className="btn btn-error">Pay</button> }
         </div>
 
         {/* table content */}

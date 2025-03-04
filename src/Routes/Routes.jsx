@@ -16,6 +16,7 @@ import AddItems from "../Components/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems";
 import UpdateMenu from "../Pages/Dashboard/UpdateMenu";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 
@@ -51,6 +52,10 @@ import UpdateMenu from "../Pages/Dashboard/UpdateMenu";
             {
                 path: 'cart',
                 element: <Cart></Cart>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             },
 
             // Admin routes========
