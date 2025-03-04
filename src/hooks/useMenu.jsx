@@ -5,7 +5,7 @@ import useAxiosPublic from "./useAxiosPublic"
 const useMenu = () => {
         const axiosPublic = useAxiosPublic()
 
-        const {data: menu = [], isPending:loading} = useQuery({
+        const {data: menu = [], isPending:loading, refetch} = useQuery({
                 queryKey: ['menu'],
                 queryFn: async () => {
                         const res = await axiosPublic.get('/menu')
@@ -26,7 +26,7 @@ const useMenu = () => {
 	// 	} )
 		
 	// },[])
-	return [menu, loading]
+	return [menu, loading, refetch]
 
 }
 
