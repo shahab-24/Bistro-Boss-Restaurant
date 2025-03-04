@@ -15,6 +15,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers";
 import AddItems from "../Components/AddItems";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems";
+import UpdateMenu from "../Pages/Dashboard/UpdateMenu";
 
 
 
@@ -64,6 +65,12 @@ import ManageItems from "../Pages/Dashboard/ManageItems";
             {
                 path:'manageItems',
                 element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+            }
+            ,
+            {
+                path:'updateItems/:id',
+                element: <AdminRoute><UpdateMenu></UpdateMenu></AdminRoute>,
+                loader: ({params}) => fetch(`http://localhost:3000/menu/${params.id}`)
             }
         ]
     }

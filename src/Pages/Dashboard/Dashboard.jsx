@@ -1,7 +1,7 @@
 import {
   FaAd,
   FaAddressBook,
-  FaAddressCard,
+//   FaAddressCard,
   FaCalendar,
   FaHome,
   FaList,
@@ -46,7 +46,13 @@ const Dashboard = () => {
               <FaCalendar></FaCalendar> Manage Items
             </NavLink>
           </li>
-        
+          {/* <li>
+            <NavLink to="/dashboard/updateItems">
+              {" "}
+              <FaCalendar></FaCalendar> Manage Items
+            </NavLink>
+          </li>
+         */}
           <li>
             <NavLink to="/dashboard/bookings">
               {" "}

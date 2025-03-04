@@ -3,6 +3,7 @@ import SectionTitle from "../../Components/SectionTitle";
 import useMenu from "../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const [menu, ,refetch] = useMenu();
@@ -36,9 +37,7 @@ Swal.fire({
     });
   };
 
-  const handleUpdateItem = () => {
-    console.log("update form manage items page");
-  };
+ 
 
   return (
     <div>
@@ -57,6 +56,7 @@ Swal.fire({
                 <th>No</th>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Price</th>
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
@@ -77,14 +77,19 @@ Swal.fire({
                       </div>
                     </div>
                   </td>
+                  
                   <td>{item.name}</td>
+                  <td>{item.price}</td>
                   <td>
-                    <button
-                      onClick={() => handleUpdateItem(item)}
-                      className="btn btn-ghost md:btn-lg bg-orange-600 text-white btn-sm"
-                    >
-                      <FaEdit></FaEdit>
-                    </button>
+                  <Link to={`/dashboard/updateItems/${item._id}`}>
+                  <button
+                     
+                     className="btn btn-ghost md:btn-lg bg-orange-600 text-white btn-sm"
+                   >
+                     <FaEdit></FaEdit>
+                   </button>
+                  </Link>
+                    
                   </td>
                   <td>
                     <button
