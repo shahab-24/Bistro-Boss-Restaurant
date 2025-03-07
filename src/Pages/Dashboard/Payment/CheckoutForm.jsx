@@ -14,6 +14,16 @@ const CheckoutForm = () => {
   const totalPrice = cart.reduce((total,item) => total + item.price,0)
   const [clientSecret, setClientSecret] = useState('')
 
+  useEffect(() => {
+        axiosSecure.post('/create-payment-intent', {price: totalPrice})
+        .then((res) => {
+                console.log(res.data.clientSecret)
+                setClientSecret(res.data.clientSecret)
+        })
+        
+  },[axiosSecure, totalPrice])
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,33 +51,25 @@ const CheckoutForm = () => {
     }
 
 //     confirm payment-----------------
-const {paymentIntent, error : confirmError} = await stripe.confirmCardPayment(clientSecret, {
+const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
                 card: card, 
                 billing_details: {
-                        user: user?.email || 'anonymous',
+                        email: user?.email || 'anonymous',
                         name: user?.displayName || 'anonymous'
                 }
 
         }
 })
 if(confirmError){
-        console.log('confirm error',confirmError)
+        console.log(confirmError)
 }
 else{
-        console.log('paymennt intent',paymentIntent)
+        console.log('payment intent',paymentIntent)
 }
   };
 
-  useEffect(() => {
-        axiosSecure.post('/create-payment-intent', {price: totalPrice})
-        .then((res) => {
-                console.log(res.data.clientSecret)
-                setClientSecret(res.data.clientSecret)
-        })
-        
-  },[axiosSecure, totalPrice])
-
+ 
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -90,7 +92,7 @@ else{
         <button
           className="btn btn-sm btn-primary my-4"
           type="submit"
-          disabled={!stripe}
+          disabled={!stripe ||!clientSecret}
         >
           Pay
         </button>
