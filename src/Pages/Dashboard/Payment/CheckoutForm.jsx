@@ -9,6 +9,7 @@ const CheckoutForm = () => {
   const [error, setError] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const [transactionId, setTransactionId] = useState('')
   const axiosSecure = useAxiosSecure()
   const [cart] = useCart()
   const totalPrice = cart.reduce((total,item) => total + item.price,0)
@@ -65,7 +66,24 @@ if(confirmError){
         console.log(confirmError)
 }
 else{
+        setTransactionId('')
         console.log('payment intent',paymentIntent)
+        if(paymentIntent.status === 'succeeded'){
+                setTransactionId(paymentIntent.id)
+
+                // save payment info===========send to server
+                const payment = {
+                        email: user?.email,
+                        price: totalPrice,
+                        transactionId: paymentIntent.id,
+                        cartIds: cart.map(item => item._id),
+                        menuIds: cart.map(item => item._id),
+                        date: new Date(),
+                        status: 'pending'
+                }
+                const res = await axiosSecure.post('/payments', payment )
+                console.log(res.data)
+        }
 }
   };
 
@@ -96,6 +114,8 @@ else{
         >
           Pay
         </button>
+         <p className="text-red-600">{error}</p>
+        {transactionId && <p className="text-green-600"> Your Transaction Id: {transactionId}</p>}
       </form>
     </div>
   );
