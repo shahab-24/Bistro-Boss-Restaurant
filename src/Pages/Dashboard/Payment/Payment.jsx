@@ -3,7 +3,7 @@ import SectionTitle from "../../../Components/SectionTitle";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 const Payment = () => {
   return (
     <div>
