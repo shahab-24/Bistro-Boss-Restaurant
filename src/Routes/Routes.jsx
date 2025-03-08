@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import ManageItems from "../Pages/Dashboard/ManageItems";
 import UpdateMenu from "../Pages/Dashboard/UpdateMenu";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 
 
@@ -49,6 +50,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
         path: '/dashboard',
         element: <PrivateRoute><Dashboard></Dashboard>,</PrivateRoute>,
         children: [
+                // normal users role========
             {
                 path: 'cart',
                 element: <Cart></Cart>
@@ -56,6 +58,10 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
             {
                 path: 'payment',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             },
 
             // Admin routes========
