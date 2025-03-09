@@ -101,7 +101,9 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/menu/${params.id}`),
+          fetch(
+            `https://bistro-boss-server-chi-pied.vercel.app/menu/${params.id}`
+          ),
       },
     ],
   },

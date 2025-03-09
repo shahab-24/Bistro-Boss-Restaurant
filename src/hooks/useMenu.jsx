@@ -1,33 +1,35 @@
-import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query";
 // import { useEffect, useState } from "react"
-import useAxiosPublic from "./useAxiosPublic"
+import useAxiosPublic from "./useAxiosPublic";
 
 const useMenu = () => {
-        const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
 
-        const {data: menu = [], isPending:loading, refetch} = useQuery({
-                queryKey: ['menu'],
-                queryFn: async () => {
-                        const res = await axiosPublic.get('/menu')
-                        return res.data;
-                }
+  const {
+    data: menu = [],
+    isPending: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ["menu"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/menu");
+      return res.data;
+    },
+  });
+  // const [menu, setMenu] = useState([])
+  // const [loading, setLoading] = useState(true)
 
-        })
-	// const [menu, setMenu] = useState([])
-	// const [loading, setLoading] = useState(true)
+  // useEffect(() => {
+  // 	fetch('https://bistro-boss-server-chi-pied.vercel.app/menu')
+  // 	.then(res => res.json())
+  // 	.then(data =>{
 
-	// useEffect(() => {
-	// 	fetch('http://localhost:3000/menu')
-	// 	.then(res => res.json())
-	// 	.then(data =>{
-			
-	// 		setMenu(data)
-	// 		setLoading(false)
-	// 	} )
-		
-	// },[])
-	return [menu, loading, refetch]
+  // 		setMenu(data)
+  // 		setLoading(false)
+  // 	} )
 
-}
+  // },[])
+  return [menu, loading, refetch];
+};
 
-export default useMenu
+export default useMenu;

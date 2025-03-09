@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { Rating } from '@smastrom/react-rating'
+import { Rating } from "@smastrom/react-rating";
 
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 
 // Import Swiper styles
 import "swiper/css";
@@ -14,7 +14,7 @@ const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/reviews")
+    fetch("https://bistro-boss-server-chi-pied.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -27,7 +27,6 @@ const Testimonials = () => {
         heading={"testimonials"}
       ></SectionTitle>
       <section>
-    
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
@@ -37,7 +36,10 @@ const Testimonials = () => {
                   value={review.rating}
                   readOnly
                 />
-				<img src="https://img.icons8.com/?size=50&id=38970&format=png" alt="" />
+                <img
+                  src="https://img.icons8.com/?size=50&id=38970&format=png"
+                  alt=""
+                />
                 {/* <p>{review.}</p> */}
                 <p>{review.details}</p>
                 <h2 className="text-3xl font-bold text-orange-400">

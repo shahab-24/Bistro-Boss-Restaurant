@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid , PieChart, Pie, Sector, ResponsiveContainer, Legend} from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid , PieChart, Pie, ResponsiveContainer, Legend} from 'recharts';
 import {
   FaJediOrder,
   FaMoneyCheckDollar,
@@ -51,7 +51,7 @@ const getPath = (x, y, width, height) => {
 
 //       custom pie chart-------------
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -86,7 +86,7 @@ const pieChartData = chartData.map((data) => {
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
-        <div className="stat">
+        <div className="stat bg-cyan-400">
           <div className="stat-figure text-secondary">
             <FaUsersBetweenLines className="text-5xl text-pink-600"></FaUsersBetweenLines>
           </div>
@@ -95,7 +95,7 @@ const pieChartData = chartData.map((data) => {
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
 
-        <div className="stat">
+        <div className="stat bg-orange-400">
           <div className="stat-figure text-secondary">
             <FaProductHunt className="text-5xl text-pink-600"></FaProductHunt>
           </div>
@@ -103,7 +103,7 @@ const pieChartData = chartData.map((data) => {
           <div className="stat-value">{stats?.menuItems}</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
-        <div className="stat">
+        <div className="stat bg-gray-400">
           <div className="stat-figure text-secondary">
             <FaJediOrder className="text-5xl text-pink-600"></FaJediOrder>
           </div>
@@ -115,7 +115,7 @@ const pieChartData = chartData.map((data) => {
 
       <div className="flex mt-20">
       {/* bar chart */}
-        <div className="w-1/2">
+        <div className="w-1/2 bg-cyan-200">
         <BarChart
       width={500}
       height={400}
