@@ -2,11 +2,13 @@ import useAuth from "../../hooks/useAuth";
 
 const UserHome = () => {
   const { user } = useAuth();
+
+  
   return (
     <div>
       <h2>
         Hi, welcome
-        <span>{user?.displayName ? user?.dispalyName : "Back"}</span>
+        <span className="text-primary text-3xl font-semiBold">  {user?.displayName ? user?.displayName : "Back !"}</span>
       </h2>
     </div>
   );

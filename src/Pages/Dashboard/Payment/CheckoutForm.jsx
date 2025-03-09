@@ -80,7 +80,7 @@ const CheckoutForm = () => {
           price: totalPrice,
           transactionId: paymentIntent.id,
           cartIds: cart.map((item) => item._id),
-          menuIds: cart.map((item) => item._id),
+          menuItemIds: cart.map((item) => item.menuId),
           date: new Date(),
           status: "pending",
         };
